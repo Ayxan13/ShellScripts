@@ -58,8 +58,11 @@ echo "Merging '$branchFrom' into '$branchTo'"
 git merge $branchFrom  || (fail "Failed to merge '$branchFrom' into '$branchTo'" 4)
 git push origin $branchTo || (fail "Failed to push '$branchTo' to origin" 5)
 
-echo "Cecking out '$branchFrom'"
-git checkout $branchFrom || (fail "Failed to checkout '$branchFrom'" 1)
+# echo "Cecking out '$branchFrom'"
+# git checkout $branchFrom || (fail "Failed to checkout '$branchFrom'" 1)
 
-echo "Pushing '$branchFrom' to origin"
-git push origin $branchFrom || (fail "Failed to push '$branchFrom' to origin" 2)
+echo "Deleting '$branchFrom' from local"
+git branch -d $branchFrom || (fail "Failed to delete '$branchFrom' from local" 6)
+
+# echo "Pushing '$branchFrom' to origin"
+# git push origin $branchFrom || (fail "Failed to push '$branchFrom' to origin" 2)
